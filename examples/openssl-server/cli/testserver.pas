@@ -238,6 +238,7 @@ procedure TOpenSSLServerTest.HandleCommandGet(AContext: TIdContext;
   ARequestInfo: TIdHTTPRequestInfo; AResponseInfo: TIdHTTPResponseInfo);
 var S: TStringStream;
 begin
+  writeln('Server Get Received: Using SSL ', FSSLHandler.SSLSocket.SSLProtocolVersionStr);
   S := TStringStream.Create('Server Response' + LineEnding);
   S.WriteString('Command: ' + ARequestInfo.RawHTTPCommand + LineEnding);
   S.WriteString('Remote IP: ' + ARequestInfo.RemoteIP + LineEnding);
