@@ -16,8 +16,8 @@
 {.$IFDEF IdIPv6} // use IPv6 by default
 
 {$DEFINE INDY100}
-{$DEFINE 10_7_0}    //so developers can IFDEF for this product version
-{$DEFINE 10_7_0_0}  //so developers can IFDEF for this specific version
+{$DEFINE 10_6_3}     //so developers can IFDEF for this product version
+{$DEFINE 10_6_3_12}  //so developers can IFDEF for this specific version
 
 // When generating C++Builder output files, certain workarounds to compiler
 // problems need to be enabled! When invoking DCC on the command-line, use
@@ -37,11 +37,8 @@
 
 // $DEFINE the following if the global objects in the IdStack and IdThread
 // units should be freed on finalization
-{$IFDEF FPC}
-{$DEFINE FREE_ON_FINAL}
-{$ELSE}
+{.$DEFINE FREE_ON_FINAL}
 {$UNDEF FREE_ON_FINAL}
-{$ENDIF}
 
 // Make sure the following is $DEFINE'd only for suitable environments
 // as specified further below.  This works in conjunction with the
@@ -151,6 +148,8 @@
 
 // Define for Delphi to auto-generate platform-appropriate '#pragma link' statements in HPP files
 {$UNDEF HAS_DIRECTIVE_HPPEMIT_LINKUNIT}
+{$UNDEF HAS_DIRECTIVE_HPPEMIT_NAMESPACE}
+{$UNDEF HAS_DIRECTIVE_HPPEMIT_LEGACYHPP}
 
 // detect compiler versions
 
@@ -224,7 +223,7 @@
   // identify Highlanger specifically.
 
   //Delphi & C++Builder 2006
-  //Delphi & C++Builder 2007 (Highlander)
+  //Delphi & C++Builder 2007 (initial release)
   {$IFDEF VER180}
     {$DEFINE DCC}
     {$DEFINE VCL_2006}
@@ -235,7 +234,7 @@
     {$ENDIF}
   {$ENDIF}
 
-  //Delphi & C++Builder 2007 (Highlander)
+  //Delphi & C++Builder 2007 (final release)
   {$IFDEF VER185}
     {$DEFINE DCC}
     {$UNDEF VCL_2006}
@@ -260,7 +259,7 @@
     {$ENDIF}
   {$ENDIF}
 
-  //Delphi & C++Builder 2009 (Tiburon)
+  //Delphi & C++Builder 2009
   {$IFDEF VER200}
     {$DEFINE DCC}
     {$DEFINE VCL_2009}
@@ -271,7 +270,7 @@
     {$ENDIF}
   {$ENDIF}
 
-  //Delphi & C++Builder 2010 (Weaver)
+  //Delphi & C++Builder 2010
   {$IFDEF VER210}
     {$DEFINE DCC}
     {$DEFINE VCL_2010}
@@ -282,10 +281,8 @@
     {$ENDIF}
   {$ENDIF}
 
-  //Delphi & C++Builder XE (Fulcrum)
+  //Delphi & C++Builder XE
   {$IFDEF VER220}
-  //REMOVE DCC DEFINE after the next Fulcrum beta.
-  //It will be defined there.
     {$IFNDEF DCC}
       {$DEFINE DCC}
     {$ENDIF}
@@ -299,7 +296,7 @@
 
   // DCC is now defined by the Delphi compiler starting in XE2
 
-  //Delphi & CBuilder XE2 (Pulsar)
+  //Delphi & CBuilder XE2
   {$IFDEF VER230}
     {$DEFINE VCL_XE2}
     {$IFDEF CBUILDER}
@@ -309,8 +306,8 @@
     {$ENDIF}
   {$ENDIF}
 
-  //Delphi & CBuilder XE3 (Waterdragon)
-  //Delphi & CBuilder XE3.5 (Quintessence - early betas only)
+  //Delphi & CBuilder XE3
+  //Delphi & CBuilder XE3.5 (early betas only)
   {$IFDEF VER240}
     {$DEFINE VCL_XE3}
     {$IFDEF CBUILDER}
@@ -320,7 +317,7 @@
     {$ENDIF}
   {$ENDIF}
 
-  //Delphi & CBuilder XE4 (Quintessence)
+  //Delphi & CBuilder XE4
   {$IFDEF VER250}
     {$UNDEF VCL_XE3}
     {$DEFINE VCL_XE4}
@@ -333,7 +330,7 @@
     {$ENDIF}
   {$ENDIF}
 
-  //Delphi & CBuilder XE5 (Zephyr)
+  //Delphi & CBuilder XE5
   {$IFDEF VER260}
     {$DEFINE VCL_XE5}
     {$IFDEF CBUILDER}
@@ -354,7 +351,7 @@
     {$ENDIF}
   {$ENDIF}
 
-  //Delphi & CBuilder XE6 (Proteus)
+  //Delphi & CBuilder XE6
   {$IFDEF VER270}
     {$DEFINE VCL_XE6}
     {$IFDEF CBUILDER}
@@ -364,7 +361,7 @@
     {$ENDIF}
   {$ENDIF}
 
-  //Delphi & CBuilder XE7 (Carpathia)
+  //Delphi & CBuilder XE7
   {$IFDEF VER280}
     {$DEFINE VCL_XE7}
     {$IFDEF CBUILDER}
@@ -374,7 +371,7 @@
     {$ENDIF}
   {$ENDIF}
 
-  //Delphi & CBuilder XE8 (Elbrus)
+  //Delphi & CBuilder XE8
   {$IFDEF VER290}
     {$DEFINE VCL_XE8}
     {$IFDEF CBUILDER}
@@ -384,7 +381,7 @@
     {$ENDIF}
   {$ENDIF}
 
-  //Delphi & CBuilder 10.0 Seattle (Aitana)
+  //Delphi & CBuilder 10.0 Seattle
   {$IFDEF VER300}
     {$DEFINE VCL_10_0}
     {$IFDEF CBUILDER}
@@ -394,7 +391,7 @@
     {$ENDIF}
   {$ENDIF}
 
-  //Delphi & CBuilder 10.1 Berlin (BigBen)
+  //Delphi & CBuilder 10.1 Berlin
   {$IFDEF VER310}
     {$DEFINE VCL_10_1}
     {$IFDEF CBUILDER}
@@ -404,7 +401,7 @@
     {$ENDIF}
   {$ENDIF}
 
-  //Delphi & CBuilder 10.2 Tokyo (Godzilla)
+  //Delphi & CBuilder 10.2 Tokyo
   {$IFDEF VER320}
     {$DEFINE VCL_10_2}
     {$IFDEF CBUILDER}
@@ -414,7 +411,7 @@
     {$ENDIF}
   {$ENDIF}
 
-  //Delphi & CBuilder 10.3 Rio (Carnival)
+  //Delphi & CBuilder 10.3 Rio
   {$IFDEF VER330}
     {$DEFINE VCL_10_3}
     {$IFDEF CBUILDER}
@@ -424,7 +421,7 @@
     {$ENDIF}
   {$ENDIF}
 
-  //Delphi & CBuilder 10.4 Sydney (Denali)
+  //Delphi & CBuilder 10.4 Sydney
   {$IFDEF VER340}
     {$DEFINE VCL_10_4}
     {$IFDEF CBUILDER}
@@ -434,7 +431,7 @@
     {$ENDIF}
   {$ENDIF}
 
-  //Delphi & CBuilder 11.0 Alexandria (Olympus)
+  //Delphi & CBuilder 11.0 Alexandria
   {$IFDEF VER350}
     {$DEFINE VCL_11}
     {$IFDEF CBUILDER}
@@ -444,7 +441,7 @@
     {$ENDIF}
   {$ENDIF}
 
-  //Delphi & CBuilder 12.0 Athens (Yukon)
+  //Delphi & CBuilder 12.0 Athens
   {$IFDEF VER360}
     {$DEFINE VCL_12}
     {$IFDEF CBUILDER}
@@ -454,16 +451,26 @@
     {$ENDIF}
   {$ENDIF}
 
-  //Delphi & CBuilder 13.0+ (?)
+  //Delphi & CBuilder 13.0 Florence
+  {$IFDEF VER370}
+    {$DEFINE VCL_13}
+    {$IFDEF CBUILDER}
+      {$DEFINE CBUILDER_13}
+    {$ELSE}
+      {$DEFINE DELPHI_13}
+    {$ENDIF}
+  {$ENDIF}
+
+  //Delphi & CBuilder 14.0+ (future releases)
   {$IFDEF CONDITIONALEXPRESSIONS}
-    {$IF CompilerVersion >= 37}
-      {$MESSAGE WARN 'Unknown compiler version detected! Assuming >= 13.x '}
+    {$IF CompilerVersion >= 38}
+      {$MESSAGE WARN 'Unknown compiler version detected! Assuming >= 14.x '}
       {$DEFINE VCL_UNKNOWN_VERSION}
-      {$DEFINE VCL_13}
+      {$DEFINE VCL_14}
       {$IFDEF CBUILDER}
-        {$DEFINE CBUILDER_13}
+        {$DEFINE CBUILDER_14}
       {$ELSE}
-        {$DEFINE DELPHI_13}
+        {$DEFINE DELPHI_14}
       {$ENDIF}
     {$IFEND}
   {$ENDIF}
@@ -579,6 +586,9 @@
   // evaluates $IF statements before $IFDEF statements...
 
   {$MACRO ON} // must be on in order to use versioning macros
+  {$IF DEFINED(FPC_FULLVERSION) AND (FPC_FULLVERSION >= 30301)}
+    {$DEFINE FPC_3_3_1_OR_ABOVE}
+  {$IFEND}
   {$IF DEFINED(FPC_FULLVERSION) AND (FPC_FULLVERSION >= 30101)}
     {$DEFINE FPC_3_1_1_OR_ABOVE}
   {$IFEND}
@@ -765,8 +775,16 @@
 
 // end FPC
 
-{$IFDEF VCL_13}
+{$IFDEF VCL_14}
+  {$DEFINE VCL_14_OR_ABOVE}
+{$ENDIF}
+
+{$IFDEF VCL_14_OR_ABOVE}
   {$DEFINE VCL_13_OR_ABOVE}
+{$ELSE}
+  {$IFDEF VCL_13}
+    {$DEFINE VCL_13_OR_ABOVE}
+  {$ENDIF}
 {$ENDIF}
 
 {$IFDEF VCL_13_OR_ABOVE}
@@ -1023,9 +1041,7 @@
   // provided it does not already define its own ENDIAN values by then...
   {$DEFINE ENDIAN_LITTLE}
   {$IFNDEF VCL_6_OR_ABOVE}
-    {$IFNDEF POSIX}
-      {$DEFINE MSWINDOWS}
-    {$ENDIF}
+    {$DEFINE MSWINDOWS}
   {$ENDIF}
   {$IFDEF MSWINDOWS}
     {$DEFINE WINDOWS}
@@ -1158,10 +1174,6 @@
     {$DEFINE HAS_NAMED_THREADS}
     {$DEFINE HAS_TStrings_NameValueSeparator}
     {$DEFINE HAS_TStrings_ValueFromIndex}
-    // Note: there is a ZLib unit available, but it doesn't have everything
-    // that is available in the System.ZLib unit in Delphi XE2+, so we are
-    // not going to use this ZLib unit yet...
-    {.$DEFINE HAS_UNIT_ZLib}
   {$ENDIF}
   {$DEFINE HAS_TFormatSettings}
   {$DEFINE HAS_PosEx}
@@ -1181,13 +1193,7 @@
   {$ENDIF}
 {$ENDIF}
 
-{$IFDEF VCL_2005_OR_ABOVE}
-  {$IFDEF DCC}
-    // class helpers were first introduced in D2005, but were buggy and not
-    // officially supported until D2006...
-    {.$DEFINE HAS_CLASS_HELPER}
-  {$ENDIF}
-{$ELSE}
+{$IFNDEF VCL_2005_OR_ABOVE}
   {$IFDEF DCC}
     // InterlockedCompareExchange() was declared in the Windows unit using Pointer
     // parameters until Delphi 2005, when it was switched to Longint parameters
@@ -1200,7 +1206,6 @@
   {$DEFINE USE_INLINE}
   {$DEFINE HAS_2PARAM_FileAge}
   {$DEFINE HAS_TStrings_LineBreak} // TODO: when was LineBreak introduced?
-  {$DEFINE HAS_CLASS_HELPER}
   {$IFDEF WINDOWS}
     // System.RegisterExpectedMemoryLeak() is only available on Windows at this time
     {$DEFINE HAS_System_RegisterExpectedMemoryLeak}
@@ -1216,7 +1221,7 @@
 {$IFDEF VCL_2007_OR_ABOVE}
   {$IFNDEF CBUILDER_2007}
     // class properties are broken in C++Builder 2007, causing AVs at compile-time
-    {$DEFINE HAS_CLASSPROPERTIES}
+    {$DEFINE HAS_CLASS_PROPERTIES}
   {$ENDIF}
   // Native(U)Int exist but are buggy, so do not use them yet
   {.$DEFINE HAS_NativeInt}
@@ -1247,7 +1252,7 @@
       {$DEFINE BROKEN_FmtStr}
     {$ENDIF}
   {$ENDIF}
-  {$DEFINE HAS_CLASSVARS}
+  {$DEFINE HAS_CLASS_VARS}
   {$DEFINE HAS_DEPRECATED_MSG}
   {$DEFINE HAS_TBytes}
   // Native(U)Int are still buggy, so do not use them yet
@@ -1276,8 +1281,8 @@
 {$ENDIF}
 
 {$IFDEF VCL_2010_OR_ABOVE}
-  {$DEFINE HAS_CLASSCONSTRUCTOR}
-  {$DEFINE HAS_CLASSDESTRUCTOR}
+  {$DEFINE HAS_CLASS_CONSTRUCTOR}
+  {$DEFINE HAS_CLASS_DESTRUCTOR}
   {$DEFINE HAS_DELAYLOAD}
   {$DEFINE HAS_TThread_NameThreadForDebugging}
   {$DEFINE DEPRECATED_TThread_SuspendResume}
@@ -1318,7 +1323,6 @@
   {$DEFINE HAS_ComponentPlatformsAttribute_OSX32}
   {$DEFINE HAS_System_ReturnAddress}
   {$DEFINE HAS_DIRECTIVE_WARN_DEFAULT}
-  {$DEFINE HAS_UNIT_System_ZLib}
 {$ENDIF}
 
 {$IFDEF VCL_XE3_OR_ABOVE}
@@ -1439,6 +1443,15 @@
   {$DEFINE HAS_ComponentPlatformsAttribute_OSXArm64}
 {$ENDIF}
 
+{$IFDEF VCL_13_OR_ABOVE}
+  {$DEFINE CAN_PUSHPOP_OPTIONS}
+  {$DEFINE USE_NORETURN}
+  // it is sufficient to have 'noturn' just on an implementation
+  // and not on the declaration, the compiler won't care either way...
+  {.$DEFINE USE_NORETURN_DECL}
+  {$DEFINE USE_NORETURN_IMPL}
+{$ENDIF}
+
 // Delphi XE+ cross-compiling
 {$IFNDEF FPC}
   {$IFDEF POSIX}
@@ -1469,7 +1482,7 @@
 
 {$IFDEF FPC}
   {$DEFINE USE_INLINE}
-  {$DEFINE USE_CLASSINLINE}
+  {$DEFINE USE_CLASS_INLINE}
   {$DEFINE USE_TBitBtn} //use Bit Buttons instead of Buttons
   {$DEFINE FPC_REINTRODUCE_BUG}
   {$DEFINE FPC_CIRCULAR_BUG}
@@ -1532,7 +1545,16 @@
   {$IFDEF FPC_2_6_0_OR_ABOVE}
     {$DEFINE HAS_NativeInt}
     {$DEFINE HAS_NativeUInt}
-    {$DEFINE HAS_CLASS_HELPER}
+    {.$DEFINE USE_NORETURN}
+    // FPC 3.3.1 has a regression where 'noreturn' on an implementation but not
+    // on the declaration will cause a compiler error. FPC 3.2.2 compiles fine...
+    {.$IFDEF FPC_3_3_1_OR_ABOVE}
+      //{$DEFINE USE_NORETURN_DECL}
+      //{.$DEFINE USE_NORETURN_IMPL}
+    {.$ELSE}
+      //{.$DEFINE USE_NORETURN_DECL}
+      //{$DEFINE USE_NORETURN_IMPL}
+    {.$ENDIF}
   {$ENDIF}
   {$IFDEF FPC_2_6_2_OR_ABOVE}
     {$DEFINE HAS_Int8}
@@ -1565,6 +1587,7 @@
     {$DEFINE HAS_PRawByteString}
     {$DEFINE HAS_UIntToStr} // requires rev 40529+
   {$ENDIF}
+  {$DEFINE CAN_PUSHPOP_OPTIONS} // TODO: when was push/pop introduced?
 {$ENDIF}
 
 {$IFDEF DOTNET}
@@ -2070,6 +2093,7 @@ SOLARIS instead of IFDEF UNIX is not an error, it's deliberate.}
 {end Unix OS specific stuff}
 {$IFDEF DEBUG}
   {$UNDEF USE_INLINE}
+  {$UNDEF USE_CLASS_INLINE}
 {$ENDIF}
 
 // RLebeau 5/24/2015: In C++Builder 2006 and 2007, UInt64 is emitted as
